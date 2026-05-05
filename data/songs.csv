@@ -1,0 +1,34 @@
+id,title,artist,emotion_tags,language,youtube_link
+1,Here Comes The Sun,The Beatles,happy;calm,english,https://www.youtube.com/watch?v=KQetemT1sWc
+2,Someone Like You,Adele,sad;melancholic,english,https://www.youtube.com/watch?v=hLQl3WQQoQ0
+3,Happy,Pharrell Williams,joyful;energetic;happy,english,https://www.youtube.com/watch?v=ZbZSe6N_BXs
+4,Fix You,Coldplay,sad;calm,english,https://www.youtube.com/watch?v=k4V3Mo61fJM
+5,Eye of the Tiger,Survivor,energetic;motivational,english,https://www.youtube.com/watch?v=btPJPFnesV4
+6,Tum Hi Ho,Arijit Singh,sad;romantic,hindi,https://www.youtube.com/watch?v=Umqb9KENgmk
+7,Channa Mereya,Arijit Singh,sad;emotional,hindi,https://www.youtube.com/watch?v=284Ov7ysmfA
+8,Kal Ho Naa Ho,Sonu Nigam,emotional;calm,hindi,https://www.youtube.com/watch?v=g0eO74UmRBs
+9,Zinda,Bhaag Milkha Bhaag,energetic;motivational,hindi,https://www.youtube.com/watch?v=Ax0G_P2dSBw
+10,Ilahi,Arijit Singh,happy;travel,hindi,https://www.youtube.com/watch?v=fdubeMFwuGs
+11,Let Me Down Slowly,Alec Benjamin,sad,english,https://www.youtube.com/watch?v=50VNCymT-Cs
+12,Perfect,Ed Sheeran,romantic,english,https://www.youtube.com/watch?v=2Vv-BfVoq4g
+13,Blinding Lights,The Weeknd,happy;energetic,english,https://www.youtube.com/watch?v=4NRXx6U8ABQ
+14,Believer,Imagine Dragons,angry;motivational,english,https://www.youtube.com/watch?v=7wtfhZwyrcc
+15,Kesariya,Arijit Singh,romantic;happy,hindi,https://www.youtube.com/watch?v=BddP6PYo2gs
+16,Apna Bana Le,Arijit Singh,romantic;calm,hindi,https://www.youtube.com/watch?v=ElZfdU54Cp8
+17,Raabta,Arijit Singh,romantic,hindi,https://www.youtube.com/watch?v=zlt38OOqwDc
+
+18,Spring Day,BTS,sad;emotional,korean,https://www.youtube.com/watch?v=xEeFrLSkMm8
+19,The Truth Untold,BTS,sad;romantic,korean,https://www.youtube.com/watch?v=tK4oNOE4V6s
+20,Epiphany,BTS,calm;emotional,korean,https://www.youtube.com/watch?v=fIkZOLsnoqY
+21,Fake Love,BTS,sad;angry,korean,https://www.youtube.com/watch?v=7C2z4GqqS5E
+22,Butterfly,BTS,calm;sad,korean,https://www.youtube.com/watch?v=Z4o7-6cFUF8
+23,Life Goes On,BTS,calm;healing,korean,https://www.youtube.com/watch?v=-5q5mZbe3V8
+24,Magic Shop,BTS,motivational;calm,korean,https://www.youtube.com/watch?v=38k5zr1e0HI
+
+25,Mystery of Love,Sufjan Stevens,sad;romantic;emotional,english,https://www.youtube.com/watch?v=4WTt69YO2VI
+26,Fourth of July,Sufjan Stevens,sad;melancholic;emotional,english,https://www.youtube.com/watch?v=JTeKpWp8Psw
+
+27,Arcade,Duncan Laurence,sad;emotional,english,https://www.youtube.com/watch?v=51u5fnyrGj4
+28,All I Want,Kodaline,sad;emotional,english,https://www.youtube.com/watch?v=mtf7hC17IBM
+29,Until I Found You,Stephen Sanchez,romantic;happy,english,https://www.youtube.com/watch?v=GxldQ9eX2wo
+30,Night Changes,One Direction,emotional;nostalgic,english,https://www.youtube.com/watch?v=syFZfO_wfMQ
