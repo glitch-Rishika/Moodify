@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Moodify</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body id="body"
+class="bg-gradient-to-br from-purple-900 via-black to-gray-900
+min-h-screen flex items-center justify-center transition-all duration-700 text-white">
+
+<!-- 🎵 Floating Emojis -->
+<div class="fixed inset-0 overflow-hidden -z-10">
+  <div class="absolute text-6xl opacity-10 animate-bounce">🎵</div>
+  <div class="absolute top-20 left-20 text-5xl opacity-10 animate-pulse">🎧</div>
+  <div class="absolute bottom-20 right-20 text-6xl opacity-10 animate-bounce">🎶</div>
+</div>
+
+<div class="bg-[#121212] w-full max-w-md rounded-3xl shadow-2xl p-6">
+
+  <h1 id="title" class="text-3xl font-extrabold text-center mb-2 animate-pulse text-green-400">
+    🎧 Moodify
+  </h1>
+
+  <p class="text-center text-gray-400 mb-4">
+    Your mood, your music
+  </p>
+
+  <form id="form" class="space-y-3">
+    <textarea id="text"
+      placeholder="How are you feeling today?"
+      class="w-full p-3 bg-[#1e1e1e] border border-gray-700 rounded-xl
+      focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+      rows="3"></textarea>
+
+    <button
+      class="w-full bg-green-500 text-black py-2 rounded-xl
+      hover:bg-green-400 hover:scale-105 transition-all duration-300">
+      Recommend Songs
+    </button>
+  </form>
+
+  <div id="result" class="mt-6"></div>
+</div>
+
+<script>
+const themes = {
+  happy: { bg: "from-yellow-400 via-orange-400 to-pink-500", accent: "text-yellow-400" },
+  sad: { bg: "from-blue-900 via-indigo-900 to-black", accent: "text-blue-400" },
+  romantic: { bg: "from-pink-500 via-red-500 to-purple-600", accent: "text-pink-400" },
+  angry: { bg: "from-red-800 via-black to-gray-900", accent: "text-red-500" },
+  calm: { bg: "from-green-700 via-teal-700 to-blue-800", accent: "text-green-400" },
+  motivational: { bg: "from-green-400 via-lime-500 to-emerald-600", accent: "text-lime-300" },
+  bored: { bg: "from-gray-600 via-gray-800 to-black", accent: "text-gray-400" },
+  neutral: { bg: "from-gray-700 via-gray-900 to-black", accent: "text-gray-300" }
+};
+
+function getEmoji(mood){
+  const map = {
+    happy: "😄",
+    sad: "😢",
+    romantic: "❤️",
+    angry: "😡",
+    calm: "😌",
+    motivational: "🔥",
+    bored: "😴",
+    neutral: "🙂"
+  };
+  return map[mood] || "🎵";
+}
+
+document.getElementById("form").onsubmit = async function(e){
+  e.preventDefault();
+
+  const text = document.getElementById("text").value;
+  const form = new FormData();
+  form.append("text", text);
+
+  const res = await fetch("/recommend", {
+    method: "POST",
+    body: form
+  });
+
+  const data = await res.json();
+  const theme = themes[data.emotion] || themes.neutral;
+
+  document.getElementById("body").className =
+    `bg-gradient-to-br ${theme.bg} min-h-screen flex items-center justify-center transition-all duration-700 text-white`;
+
+  document.getElementById("title").className =
+    `text-3xl font-extrabold text-center mb-2 animate-pulse ${theme.accent}`;
+
+  let html = `
+    <h3 class="text-lg font-semibold mb-2 ${theme.accent}">
+      ${getEmoji(data.emotion)} Mood: ${data.emotion.toUpperCase()}
+    </h3>
+
+    <p class="text-sm mb-4 text-gray-300">
+      🎧 Genre: ${data.genre}
+    </p>
+
+    <div class="grid gap-4">
+  `;
+
+  data.songs.forEach(song => {
+    let videoId = song.youtube_link.split("v=")[1];
+    if(videoId && videoId.includes("&")){
+      videoId = videoId.split("&")[0];
+    }
+
+    html += `
+      <div class="bg-[#181818] rounded-xl p-4 hover:bg-[#282828] transition-all">
+
+        <iframe width="100%" height="180"
+          src="https://www.youtube.com/embed/${videoId}"
+          frameborder="0" allowfullscreen
+          class="rounded-xl mb-2">
+        </iframe>
+
+        <p class="font-semibold">${song.title}</p>
+        <p class="text-sm text-gray-400">
+          ${song.artist} • ${song.language}
+        </p>
+
+      </div>
+    `;
+  });
+
+  html += "</div>";
+  document.getElementById("result").innerHTML = html;
+};
+</script>
+
+</body>
+</html>
